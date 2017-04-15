@@ -1,0 +1,135 @@
+%!TEX options = -shell-escape
+
+\documentclass[12pt]{report}
+\usepackage[a4paper,twoside,top=20mm,bottom=20mm,inner=30mm,outer=25mm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[greek,english]{babel}
+\usepackage[scaled=0.86]{couriers}
+\usepackage[toc,page,title,titletoc]{appendix}
+\usepackage[pdfpagelabels,unicode]{hyperref}
+\usepackage{bookmark}
+\usepackage[fixlanguage]{babelbib}
+\selectbiblanguage{greek}
+\usepackage{titlesec}
+\usepackage{etoolbox}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{minted}
+\usepackage{subcaption}
+\captionsetup{compatibility=false}
+\graphicspath{ {images/} }
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithm}
+\usepackage{afterpage}
+\usepackage{comment}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
+\hypersetup{
+  colorlinks=true,
+  % linkcolor=green,
+  citecolor=red,
+  % filecolor=blue,
+  urlcolor=blue,
+  % pdftitle=,
+  % pdfauthor=,
+  % pdfsubject=,
+  % pdfkeywords=
+}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\titleformat{\chapter}
+  {\normalfont\LARGE\bfseries}{\thechapter}{1em}{}
+\titlespacing*{\chapter}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+
+\makeatletter
+\patchcmd\@resets@pp{%
+  \def\Hy@chapapp{\appendixname }%
+}{%
+  \def\Hy@chapapp{appendix}%
+}{}{\errmessage{Cannot patch \string\@resets@pp}}
+\patchcmd\@resets@ppsub{%
+  \def\Hy@chapapp{\appendixname }%
+}{%
+  \def\Hy@chapapp{appendix}%
+}{}{\errmessage{Cannot patch \string\@resets@pp}}
+\makeatother
+
+\addto{\captionsgreek}{\renewcommand{\appendixpagename}{Παραρτήματα}}
+\addto{\captionsgreek}{\renewcommand{\appendixtocname}{Παραρτήματα}}
+\addto{\captionsgreek}{\renewcommand{\appendixname}{Παράρτημα}}
+
+\begin{document}
+\selectlanguage{greek}
+
+\hypersetup{pageanchor=false}
+
+\begin{titlepage}
+  \centering
+  \includegraphics[width=0.15\textwidth]{pyrforos}\par\vspace{1cm}
+  {\scshape\LARGE Εθνικό Μετσόβιο Πολυτεχνείο\\
+  Σχολή Ηλεκτρολόγων Μηχανικών και Μηχανικών Η/Υ\par}
+  \vspace{1cm}
+  {\scshape\Large Εργασία στο Μεταπτυχιακό Μάθημα\\
+  Τεχνολογίες Λογισμικού Για Παροχή Υπηρεσιών σε Επικοινωνιακά Δίκτυα\par}
+  \vspace{1.5cm}
+  {\Large\bfseries Συστήματα Διαχείρισης Περιεχομένου Ανοιχτού Κώδικα\par}
+  \vspace{2cm}
+  {\large Δημήτριος Πολίτης (ΥΔ)\par}
+  \vfill
+  Επιβλέπων \par
+  Καθ. Ευστάθιος Συκάς
+
+  \vfill
+
+% Bottom of the page
+  {\large \today\par}
+  \afterpage{\blankpage}
+\end{titlepage}
+
+\tableofcontents
+\thispagestyle{empty}
+
+\listoftables
+\thispagestyle{empty}
+
+\listoffigures
+\thispagestyle{empty}
+
+\begin{abstract}
+Στο παρόν μελετώνται 
+
+\vspace{10mm}
+
+\noindent \textbf{Λέξεις κλειδιά:} Συστήματα Διαχείρισης Περιεχομένου, Ανοιχτός Κώδικας, Εξυπηρετητής Ιστοσελίδων Διαδίκτυο.
+\end{abstract}
+
+\hypersetup{pageanchor=true}
+\clearpage
+\pagenumbering{arabic}
+
+\chapter{Εισαγωγή}\label{ch1}
+\section{Εισαγωγή}
+
+\section{Συμπεράσματα}
+Στο παρόν, παρουσιάστηκε ένα μοντέλο προσομοίωσης του πρωτοκόλλου πολλαπλής πρόσβασης μέσου (\textlatin{MAC}) τύπου \textlatin{slotted aloha}. Τα αποτελέσματα της προσομοίωσης έδειξαν τιμές πολύ κοντά στις θεωρητικά αναμενόμενες. Συγκεκριμένα, η αύξηση των μνημών προσωρινής αποθήκευσης πακέτων (\textlatin{receiving buffers}) στους σταθμούς, είχε θετική επίδραση στην απόδοση του συστήματος \textlatin{S}, η οποία όμως εμφανίζονταν φθίνουσα, καθώς αυξάνονταν το πλήθος των σταθμών \textlatin{M}. Επίσης, η αύξηση του πλήθους των \textlatin{receiving buffers} πάνω από δύο, δεν είχε κάποια σημαντική επίδραση στην αποδοτικότητα του συστήματος. Αντιθέτως, η αύξηση των διαύλων επικοινωνίας μεταξύ των κόμβων είχε σημαντικά θετική επίδραση στην διεκπεραιωτική δυνατότητα του συστήματος και τη μείωση της καθυστέρησης, ανεξάρτητα από το πλήθος των σταθμών.
+
+Τα παραπάνω καταδεικνύουν ότι η βέλτιστη απόδοση του πρωτοκόλλου επιτυγχάνεται όταν οι σταθμοί έχουν δύο το πλήθος \textlatin{receiving buffers} και ικανό αριθμό καναλιών - διαύλων επικοινωνίας μεταξύ τους (ο οποίος μπορεί να περιορίζεται από τεχνικούς περιορισμούς ή περιορισμούς κόστους). Στην περίπτωση των ασύρματων δικτύων αυτό μπορεί να μεταφραστεί: είτε σε ικανό αριθμό πομποδεκτών ανά σταθμό, οι οποίοι θα λειτουργούν σε διαφορετικές συχνότητες για λόγους αποφυγής παρεμβολών, είτε σε κατάλληλο σχήμα πολύπλεξης (\textlatin{TDM, FDM}), επαναχρησιμοποίηση φάσματος με αναπήδηση συχνότητας κ.α. Κατά αντιστοιχία, στα οπτικά δίκτυα είναι δυνατή η χρησιμοποίηση πολύτροπων οπτικών ινών και εκπομπή των δεδομένων σε διαφορετικά μήκη κύματος για την ταυτόχρονη χρησιμοποίηση του μέσου.
+
+\begin{appendices}
+
+\end{appendices}
+
+\appendix
+
+\bibliographystyle{babplain}
+\bibliography{gnu-cms}
+
+\end{document}
