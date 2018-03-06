@@ -176,6 +176,23 @@ To \textlatin{Drupal} χρησιμοποιείται σε αρκετούς γν�
 \subsection{\textlatin{CMS} δημοπρασιών}
 \subsection{\textlatin{CMS} διαχείρησης πολυμέσων (\textlatin{DAMS})}
 
+\begin{table}[h!]
+\centering
+\scriptsize
+\begin{tabular}{||p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}||}
+\hline
+\textlatin{arbitrary source} & \textlatin{channel} & \textlatin{boolean busy} & \textlatin{dest} & \textlatin{bool success} & \textlatin{total packets on dest} & \textlatin{successful packets on dest} & \textlatin{bool destruction on channel} \\ [0.5ex]
+\hline\hline
+1 & 6  & 1 & 15 & 0 & 0 & 0 & 1\\
+2 & 7  & 0 & 5  & 1 & 2 & 2 & 0\\
+3 & 10 & 0 & 5  & 1 & 2 & 2 & 0\\
+4 & 5  & 1 & 6  & 1 & 1 & 1 & 0\\
+5 & 6  & 1 & 7  & 0 & 0 & 0 & 1\\ [1ex]
+\hline
+\end{tabular}
+\caption{Στιγμιότυπο Πίνακα Προσομοίωσης (\textlatin{stage3, F=2})}
+\label{tab01}
+\end{table}
 
 \section{Συμπεράσματα}
 Στο παρόν, παρουσιάστηκε ένα μοντέλο προσομοίωσης του πρωτοκόλλου πολλαπλής πρόσβασης μέσου (\textlatin{MAC}) τύπου \textlatin{slotted aloha}. Τα αποτελέσματα της προσομοίωσης έδειξαν τιμές πολύ κοντά στις θεωρητικά αναμενόμενες. Συγκεκριμένα, η αύξηση των μνημών προσωρινής αποθήκευσης πακέτων (\textlatin{receiving buffers}) στους σταθμούς, είχε θετική επίδραση στην απόδοση του συστήματος \textlatin{S}, η οποία όμως εμφανίζονταν φθίνουσα, καθώς αυξάνονταν το πλήθος των σταθμών \textlatin{M}. Επίσης, η αύξηση του πλήθους των \textlatin{receiving buffers} πάνω από δύο, δεν είχε κάποια σημαντική επίδραση στην αποδοτικότητα του συστήματος. Αντιθέτως, η αύξηση των διαύλων επικοινωνίας μεταξύ των κόμβων είχε σημαντικά θετική επίδραση στην διεκπεραιωτική δυνατότητα του συστήματος και τη μείωση της καθυστέρησης, ανεξάρτητα από το πλήθος των σταθμών.

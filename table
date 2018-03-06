@@ -1,0 +1,357 @@
+Website & drupal.org & joomla.org & wordpress.org \\
+Latest version & 8.1.3 & 3.6 & 4.6.1 \\
+Release date & 2016 Jun 15 & 2016 Aug 4 & 2016 Sep 7 \\
+License & Open Source & Open Source & Open Source \\
+Supported databases & MySQL, PostgreSQL & MySQL, PostgreSQL, SQL Server & MySQL \\
+Platform PHP & PHP & PHP \\
+Security Captcha & No Plugin & No Plugin & No Plugin \\
+Content Approval & Yes & Yes & Yes \\
+Email Verification & Yes & Yes & Yes \\
+Granular Privileges & Yes & Yes & Yes \\
+Authentication methods & LDAP (plugin), NTLM (plugin), Custom & LDAP, Custom & LDAP (plugin), Custom \\
+Session Management & Yes & Yes & No Plugin & Yes Limited \\
+SSL Compatible & Yes & Yes & Yes \\
+Login History & Yes & Yes & No Plugin \\
+Modifications History & Yes & No Plugin & No Plugin \\
+Commercial Support & Yes & Yes & Yes \\
+Developer Community & Yes & Yes & Yes \\
+Public Forum & Yes & Yes & Yes \\
+Plugin API & Yes & Yes & Yes \\
+Drag \& Drop Content & No Plugin & Yes & Yes \\
+Image Resizing & No Plugin & Yes & Yes \\
+Multiple Upload 
+No Plugin   
+Yes 
+Yes 
+No
+Spellchecker    
+No Plugin   
+No Plugin   
+Yes 
+Yes
+Style Wizard    
+No Limited  
+No  
+No  
+No
+Subscriptions   
+No Plugin   
+No Plugin   
+No Plugin   
+No Plugin
+Template Language   
+Yes Limited 
+Yes 
+No  
+Yes
+Undo    
+Yes Limited 
+No  
+Yes Limited 
+Yes
+WYSIWYG Editor  
+No Plugin   
+Yes 
+Yes 
+Yes
+Extensible User Profiles    
+Yes 
+Yes 
+No Plugin   
+No Plugin
+Interface Localization  
+Yes 
+Yes 
+Yes 
+Yes
+Performance             
+Caching 
+Yes 
+Yes 
+No Plugin   
+Yes
+Load Balancing  
+Yes Limited 
+Yes 
+Yes Limited 
+No
+Database Replication    
+Yes Limited 
+Yes 
+No Plugin   
+No
+Static Content Export   
+No  
+No  
+No Plugin   
+No
+Multilingual Content    
+Yes 
+No Plugin   
+No Plugin   
+No Plugin
+Multi-Site Deployment   
+Yes 
+No Plugin   
+Yes 
+No Plugin
+RSS (Content Syndication)   
+Yes 
+Yes 
+Yes 
+Yes
+Management              
+Advertising Management  
+No Plugin   
+Yes 
+No  
+Yes
+Content Scheduling  
+No Plugin   
+Yes 
+Yes Limited 
+Yes
+Inline Administration   
+Yes 
+Yes 
+No Plugin   
+Yes
+Package Deployment  
+No  
+No  
+No  
+Yes
+Sub-sites / Roots   
+Yes 
+Yes 
+Yes 
+No
+Themes / Templates  
+Yes 
+Yes 
+Yes 
+Yes
+Web Statistics  
+Yes 
+Yes 
+No Plugin   
+Yes
+Web-based Translation Management    
+Yes 
+No Plugin   
+Yes Limited 
+Yes
+Workflow Engine 
+Yes Limited 
+No Plugin   
+No  
+No
+Interoperability                
+FTP Support 
+Yes Limited 
+Yes 
+No Plugin   
+No
+UTF-8 Support   
+Yes 
+Yes 
+Yes 
+Yes
+WebDAV Support  
+No  
+No  
+No  
+No
+XHTML Compliant 
+Yes 
+Yes 
+Yes 
+Yes
+Built-in Applications               
+Blog    
+Yes 
+Yes 
+Yes 
+Yes
+Chat    
+No Plugin   
+No Plugin   
+No Plugin   
+No Plugin
+Classifieds 
+No Plugin   
+No Plugin   
+No Plugin   
+No Plugin
+Contact Management  
+No Plugin   
+Yes 
+No Plugin   
+Yes
+Forum (Discussion)  
+Yes 
+No Plugin   
+No Plugin   
+No Plugin
+Document Management 
+Yes Limited 
+No Plugin   
+No  
+No Plugin
+Events Management   
+No Plugin   
+No Plugin   
+No Plugin   
+No
+FAQ Management  
+Yes 
+Yes 
+No Plugin   
+Yes
+File Distribution   
+No Plugin   
+No Plugin   
+No Plugin   
+No Plugin
+Graphs and Charts   
+No  
+No Plugin   
+No  
+No Plugin
+Guestbook   
+No Plugin   
+No Plugin   
+No Plugin   
+No Plugin
+Help Desk / Bug Reporting   
+No Plugin   
+No Plugin   
+No  
+No Plugin
+Job Postings    
+No Plugin   
+No Plugin   
+No Plugin   
+No Plugin
+Link Management 
+No Plugin   
+Yes 
+Yes 
+Yes
+Mail Form   
+No Plugin   
+Yes 
+No Plugin   
+Yes
+Matrix  
+No  
+No  
+No  
+No
+My Page / Dashboard 
+No Plugin   
+Yes 
+Yes 
+No Plugin
+Newsletter management   
+No Plugin   
+No Plugin   
+No Plugin   
+No Plugin
+Photo Gallery   
+No Plugin   
+No Plugin   
+Yes 
+No Plugin
+Project Tracking    
+No Plugin   
+No Plugin   
+No  
+No Plugin
+Search Engine   
+Yes 
+Yes 
+Yes 
+Yes
+Polls   
+Yes 
+Yes 
+No Plugin   
+Yes
+Tests / Quizzes 
+No Plugin   
+No Plugin   
+No Plugin   
+No Plugin
+Surveys 
+No Plugin   
+No Plugin   
+No Plugin   
+No Plugin
+Newsletter  
+    
+    
+    
+Geolocation 
+    
+    
+    
+Time Tracking   
+No Plugin   
+No Plugin   
+No Plugin   
+No
+WYSIWYG 
+No Plugin   
+Yes 
+    
+User Contributions  
+Yes 
+Yes 
+Yes 
+Yes
+Web Services Front End  
+Yes Limited 
+Yes 
+No Plugin   
+No
+Wiki    
+No Plugin   
+No Plugin   
+No Plugin   
+Yes Limited
+Shopping Cart   
+No Plugin   
+No Plugin   
+No Plugin   
+No Plugin
+Geo and Behavioral targeting    
+    
+    
+    
+SEO Features                
+Metadata    
+Yes 
+Yes 
+Yes 
+Yes
+SEO Friendly URLs   
+Yes 
+Yes 
+Yes 
+Yes
+Open graph  
+    
+    
+    
+Site Map    
+No Plugin   
+No Plugin   
+No Plugin   
+No Plugin
+Additional              
+Website 
+drupal.org  
+joomla.org  
+WordPress.org   
+sourceforge.net/...
