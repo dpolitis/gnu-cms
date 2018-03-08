@@ -443,10 +443,25 @@ Site Map & No (Plugin Only) & No (Plugin Only) & No (Plugin Only) \\
 Για τη φιλοξενία του ιστοτόπου της εργασίας χρησιμοποιήθηκε μια μηχανή \textlatin{centos7 64bit} από το επίσημο αποθετήριο. Επειδή η ανάπτυξη έγινε σε \textlatin{Fedora Linux}, χρησιμοποιήθηκε ως \textlatin{Virtualization provider} το παρεχόμενο από το ίδιο το λειτουργικό \textlatin{KVM / libvirt}. Στην συνέχεια με τη χρήση \textlatin{shell provissioner} έγινε η εγκατάσταση και παραμετροποίηση της βάσης δεδομένων (\textlatin{mariadb}) και του \textlatin{webserver (apache 2.4, php 5.4)}. Με τη χρήση του ίδιου \textlatin{provissioner} συγχρονίστηκε ο κώδικας και τέθηκαν τα σωστά \textlatin{filesystem permissions}.
 Όλα τα παραπάνω ορίζονται στο αρχείο \textlatin{\texttt{Vagrantfile}} το οποίο παρατίθεται στο Παράρτημα~\ref{AppA}.
 
-\section{Συμπεράσματα}
-Στο παρόν, παρουσιάστηκε ένα μοντέλο προσομοίωσης του πρωτοκόλλου πολλαπλής πρόσβασης μέσου (\textlatin{MAC}) τύπου \textlatin{slotted aloha}. Τα αποτελέσματα της προσομοίωσης έδειξαν τιμές πολύ κοντά στις θεωρητικά αναμενόμενες. Συγκεκριμένα, η αύξηση των μνημών προσωρινής αποθήκευσης πακέτων (\textlatin{receiving buffers}) στους σταθμούς, είχε θετική επίδραση στην απόδοση του συστήματος \textlatin{S}, η οποία όμως εμφανίζονταν φθίνουσα, καθώς αυξάνονταν το πλήθος των σταθμών \textlatin{M}. Επίσης, η αύξηση του πλήθους των \textlatin{receiving buffers} πάνω από δύο, δεν είχε κάποια σημαντική επίδραση στην αποδοτικότητα του συστήματος. Αντιθέτως, η αύξηση των διαύλων επικοινωνίας μεταξύ των κόμβων είχε σημαντικά θετική επίδραση στην διεκπεραιωτική δυνατότητα του συστήματος και τη μείωση της καθυστέρησης, ανεξάρτητα από το πλήθος των σταθμών.
+\section{Εγκατάσταση ιστοτόπου \textlatin{Drupal} Βήμα - Βήμα}\label{manual_setup}
 
-Τα παραπάνω καταδεικνύουν ότι η βέλτιστη απόδοση του πρωτοκόλλου επιτυγχάνεται όταν οι σταθμοί έχουν δύο το πλήθος \textlatin{receiving buffers} και ικανό αριθμό καναλιών - διαύλων επικοινωνίας μεταξύ τους (ο οποίος μπορεί να περιορίζεται από τεχνικούς περιορισμούς ή περιορισμούς κόστους). Στην περίπτωση των ασύρματων δικτύων αυτό μπορεί να μεταφραστεί: είτε σε ικανό αριθμό πομποδεκτών ανά σταθμό, οι οποίοι θα λειτουργούν σε διαφορετικές συχνότητες για λόγους αποφυγής παρεμβολών, είτε σε κατάλληλο σχήμα πολύπλεξης (\textlatin{TDM, FDM}), επαναχρησιμοποίηση φάσματος με αναπήδηση συχνότητας κ.α. Κατά αντιστοιχία, στα οπτικά δίκτυα είναι δυνατή η χρησιμοποίηση πολύτροπων οπτικών ινών και εκπομπή των δεδομένων σε διαφορετικά μήκη κύματος για την ταυτόχρονη χρησιμοποίηση του μέσου.
+\section{\textlatin{Ansible (Open Source Automation Provider)}}\label{ansible}
+Ansible is software that automates software provisioning, configuration management, and application deployment.~\cite{geerling_2015}
+
+Michael DeHaan, the author of the provisioning server application Cobbler and co-author of the Func framework for remote administration, developed the platform. It is included as part of the Fedora distribution of Linux, owned by Red Hat Inc., and is also available for Red Hat Enterprise Linux, CentOS, Scientific Linux and Oracle Linux via Extra Packages for Enterprise Linux (EPEL) as well as for other operating systems.[4]
+
+Ansible, Inc. (originally AnsibleWorks, Inc.) was the company set up to commercially support and sponsor Ansible.[5][6] Red Hat acquired Ansible in October 2015.[7][8]
+
+The name "Ansible" references a fictional instantaneous hyperspace communication system (as featured in Orson Scott Card's Ender's Game (1985),[9][10] and originally conceived by Ursula K. Le Guin for her novel Rocannon's World (1966)).
+
+To orchestrate nodes, Ansible deploys modules to nodes over SSH. Modules are temporarily stored in the nodes and communicate with the controlling machine through a JSON protocol over the standard output.[13] When Ansible is not managing nodes, it does not consume resources because no daemons or programs are executing for Ansible in the background
+
+
+\section{Συμπεράσματα}
+Στο παρόν, παρουσιάστηκε η διαδικασία ανάπτυξης καθώς και η λειτουργικότητα μιας ιστοσελίδας ηλεκτρονικών δημοπρασιών. Έγινε αναφορά σε βασικές έννοιες του ηλεκτρονικού εμπορίου και των ηλεκτρονικών δημοπρασιών. Στη συνέχεια περιγράφηκαν τα εργαλεία τα οποία χρησιμοποιήθηκαν για την ανάπτυξη του ιστοτόπου της εργασίας και ο τρόπος με τον οποίο αυτοματοποιήθηκαν και συνδυάστηκαν για την παραγωγή του τελικού αποτελέσματος, μετά και τη διαδικασία αποσφαλμάτωσης. Τέλος παρουσιάστηκαν οι βασικές λειτουργίες της σελίδας με συνοπτικό τρόπο και τη βοήθεια ανάλογων \textlatin{screenshots}.
+
+Η ιστοσελίδα της εργασίας παρέχει πλήρη λειτουργικότητα διεξαγωγής των δημοπρασιών, με αυτόματη ανανέωση της σελίδας και ενημέρωση των χρηστών για την πορεία της διαδικασίας. Εκτός αυτού, με τη διάκριση των ρόλων των χρηστών και την ασφαλή αυθεντικοποίηση μέσω φορμών εισαγωγής στοιχείων, παρέχεται η απαιτούμενη διασφάλιση της διαδικασίας. Λειτουργικότητες που δεν ενσωματώθηκαν στην εργασία, όπως πληρωμές με τραπεζικές κάρτες, \textlatin{paypal} κ.α παραλήφθηκαν για λόγους κόστους, όπως αναλύθηκε στο~\ref{phpprobid}.
+
 
 \begin{appendices}
 \chapter{Αρχείο Ρύθμισης Εικονικής Μηχανής \textlatin{Vagrantfile}}\label{AppA}
