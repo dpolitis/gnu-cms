@@ -507,17 +507,125 @@ Site Map & No (Plugin Only) & No (Plugin Only) & No (Plugin Only) \\
 Για τη φιλοξενία του ιστοτόπου της εργασίας χρησιμοποιήθηκε μια μηχανή \textlatin{centos7 64bit} από το επίσημο αποθετήριο. Επειδή η ανάπτυξη έγινε σε \textlatin{Fedora Linux}, χρησιμοποιήθηκε ως \textlatin{Virtualization provider} το παρεχόμενο από το ίδιο το λειτουργικό \textlatin{KVM / libvirt}. Στην συνέχεια με τη χρήση \textlatin{shell provissioner} έγινε η εγκατάσταση και παραμετροποίηση της βάσης δεδομένων (\textlatin{mariadb}) και του \textlatin{webserver (apache 2.4, php 5.4)}. Με τη χρήση του ίδιου \textlatin{provissioner} συγχρονίστηκε ο κώδικας και τέθηκαν τα σωστά \textlatin{filesystem permissions}.
 Όλα τα παραπάνω ορίζονται στο αρχείο \textlatin{\texttt{Vagrantfile}} το οποίο παρατίθεται στο Παράρτημα~\ref{AppA}.
 
-\section{\textlatin{Ansible (Open Source Automation Provider)}}\label{ansible}
-Ansible is software that automates software provisioning, configuration management, and application deployment.~\cite{geerling_2015}
-
-Michael DeHaan, the author of the provisioning server application Cobbler and co-author of the Func framework for remote administration, developed the platform. It is included as part of the Fedora distribution of Linux, owned by Red Hat Inc., and is also available for Red Hat Enterprise Linux, CentOS, Scientific Linux and Oracle Linux via Extra Packages for Enterprise Linux (EPEL) as well as for other operating systems.[4]
-
-Ansible, Inc. (originally AnsibleWorks, Inc.) was the company set up to commercially support and sponsor Ansible.[5][6] Red Hat acquired Ansible in October 2015.[7][8]
-
-The name "Ansible" references a fictional instantaneous hyperspace communication system (as featured in Orson Scott Card's Ender's Game (1985),[9][10] and originally conceived by Ursula K. Le Guin for her novel Rocannon's World (1966)).
-
-To orchestrate nodes, Ansible deploys modules to nodes over SSH. Modules are temporarily stored in the nodes and communicate with the controlling machine through a JSON protocol over the standard output.[13] When Ansible is not managing nodes, it does not consume resources because no daemons or programs are executing for Ansible in the background
 \section{Εγκατάσταση ιστοτόπου \textlatin{Drupal} Βήμα - Βήμα}\label{manual_setup}
+Η διαδικασία ξεκινάει με τη δημιουργία της εικονικής μηχανής, όπως περιγράφηκε στο~\ref{vagrant}. Παίρνουμε κονσόλα στο μηχάνημα με την εντολή \texttt{\textlatin{vagrant ssh} και έπειτα ενημερώνουμε το σύστημα με τα τελευταία πακέτα.
+\begin{vergatim}
+\textlatin{# yum update}
+\end{verbatim}
+
+Στη συνέχεια εγκαθίσταται το λεγόμενο \textlatin{LAMP stack (Linux, Apache, MySQL, PHP)}. Μαζί εγκαθίσταται και η βιβλιοθήκη γραφικών της \textlatin{Drupal, GD}. Ενεργοποιούνται οι σωστές ζώνες ώρας στο σύστημα και στην \textlatin{php} και οι υπηρεσίες του \textlatin{webserver} και της βάσης δεδομένων ενεργοποιούνται, ώστε να εκκινούν κατά την έναρξη του συστήματος.
+\begin{vergatim}
+\selectlanguage{english}
+# yum install -y epel-release
+# yum install -y policycoreutils-python httpd mariadb-server php php-common php-mysql php-gd php-mcrypt php-soap
+
+# timedatectl set-timezone Europe/Athens
+# sed -i 's/;date.timezone =/date.timezone = Europe\/Athens/g' /etc/php.ini
+# systemctl enable httpd
+# systemctl enable mariadb
+\selectlanguage{greek}
+\end{verbatim}
+
+Στη συνέχεια γίνεται λήψη του αντίστοιχου πακέτου της \textlatin{Drupal}.
+\begin{vergatim}
+\selectlanguage{english}
+# mkdir /var/www/html/example.com
+# cd /var/www/html/example.com
+# wget http://ftp.drupal.org/files/projects/drupal-8.0.5.tar.gz
+# tar -zxvf drupal-8.*.tar.gz --strip-components=1 -C public_html
+# chown -R apache:apache /var/www/html/example.com
+\selectlanguage{greek}
+\end{verbatim}
+
+Drupal 8’s settings.php and services.yml files are configured when the first start configuration is run. The files must be created from the default templates and their permissions changed so that Drupal can write to them.
+
+    cd /var/www/html/example.com/public_html/sites/default
+    sudo cp default.settings.php settings.php && sudo cp default.services.yml services.yml
+    sudo chmod 666 {services.yml,settings.php}
+
+    Enforce trusted hostnames with those that users will access your site by.
+
+    /var/www/html/example.com/public_html/sites/default/settings.php
+
+        1234
+
+          
+
+        $settings['trusted_host_patterns'] = array(
+          '^www\.example\.com$',
+          '^example\.com$',
+          );
+
+        Note
+        trusted_host_patterns also accepts IP addresses or localhost.
+
+Configure Apache 2.4Permalink
+
+    Drupal 8 enables Clean URLs by default so Apache’s rewrite module must also be enabled:
+
+    sudo a2enmod rewrite
+
+    Then specify the rewrite conditions for DocumentRoot in Apache’s configuration file.
+
+    /etc/apache2/apache2.conf
+
+         1 2 3 4 5 6 7 8 91011
+
+          
+
+        <Directory /var/www/>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+          RewriteEngine on
+            RewriteBase /
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteCond %{REQUEST_FILENAME} !-d
+            RewriteCond %{REQUEST_URI} !=/favicon.ico
+            RewriteRule ^ index.php [L]
+        </Directory>
+
+    Change ownership of Apache’s DocumentRoot from the system’s root user to Apache. This allows you to install modules and themes, and to update Drupal, all without being prompted for FTP credentials.
+
+    sudo chown -R www-data /var/www/html/example.com
+
+    Restart Apache so all changes are applied. If you’re using a Linux distribution which uses systemd (CentOS 7, Debian 8, Fedora, Ubuntu 15.10+):
+
+    sudo systemctl restart apache2
+
+    If your init system is SystemV or Upstart (CentOS 6, Debian 7, Ubuntu 14.04):
+
+    sudo service apache2 restart
+
+Drupal First StartPermalink
+
+    Go to your Linode’s domain or IP address in a web browser. This will show you the first step of Drupal 8’s web configuration. Choose your language and proceed to the next page.
+
+    Drupal 8 choose language.
+
+    Choose whether you want a Standard or Minimal installation profile.
+
+    Drupal 8 choose installation profile.
+
+    Complete the database configuration using the DB name, username and password you created when setting up your LAMP stack with a MySQL or MariaDB database.
+
+    Drupal 8 database configuration.
+
+        Note
+        If you forgot the name of your database, log back in to MySQL with: mysql -u root -p and enter: show databases;.
+
+    After Drupal 8 installs your site, you’ll be shown a site configuration page where you must create the admin user for your website. Do not use the same password that you used for your database.
+
+    Drupal 8 site configuration.
+
+    Next, you’ll be taken to the administrative dashboard which will say that Drupal 8 was installed successfully.
+
+    Drupal 8 installed welcome.
+
+    Now that Drupal 8 is finished writing to settings.php and services.yaml, you can restore their default permissions:
+
+    sudo chmod 644 /var/www/html/example.com/public_html/sites/default/{settings.php,services.yml}
+
 
 \section{Συμπεράσματα}
 Στο παρόν, παρουσιάστηκε η διαδικασία ανάπτυξης καθώς και η λειτουργικότητα μιας ιστοσελίδας ηλεκτρονικών δημοπρασιών. Έγινε αναφορά σε βασικές έννοιες του ηλεκτρονικού εμπορίου και των ηλεκτρονικών δημοπρασιών. Στη συνέχεια περιγράφηκαν τα εργαλεία τα οποία χρησιμοποιήθηκαν για την ανάπτυξη του ιστοτόπου της εργασίας και ο τρόπος με τον οποίο αυτοματοποιήθηκαν και συνδυάστηκαν για την παραγωγή του τελικού αποτελέσματος, μετά και τη διαδικασία αποσφαλμάτωσης. Τέλος παρουσιάστηκαν οι βασικές λειτουργίες της σελίδας με συνοπτικό τρόπο και τη βοήθεια ανάλογων \textlatin{screenshots}.
