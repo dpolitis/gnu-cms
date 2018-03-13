@@ -94,7 +94,7 @@ Vagrant.configure("2") do |config|
      yum update -y
      yum install -y epel-release
      yum install -y http://dl.iuscommunity.org/pub/ius/stable/CentOS/7/x86_64/ius-release-1.0-14.ius.centos7.noarch.rpm
-     yum install -y policycoreutils-python wget httpd mariadb-server php70u php70u-pdo php70u-mysqlnd php70u-gd php70u-mysql php70u-opcache php70u-mbstring
+     yum install -y policycoreutils-python wget httpd mariadb-server php56u php56u-pdo php56u-mysqlnd php56u-gd php56u-mysql php56u-opcache php56u-mbstring
      timedatectl set-timezone Europe/Athens
      sed -i 's/;date.timezone =/date.timezone = Europe\/Athens/g' /etc/php.ini
      systemctl enable httpd
