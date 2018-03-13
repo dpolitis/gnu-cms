@@ -542,8 +542,8 @@ Site Map & No (Plugin Only) & No (Plugin Only) & No (Plugin Only) \\
 \scriptsize
 \begin{verbatim}
   # yum install -y epel-release
-  # yum install -y policycoreutils-python httpd mariadb-server php php-common php-mysql php-gd
-
+  # yum install -y http://dl.iuscommunity.org/pub/ius/stable/CentOS/7/x86_64/ius-release-1.0-14.ius.centos7.noarch.rpm
+  # yum install -y policycoreutils-python wget httpd mariadb-server php56u php56u-pdo php56u-mysqlnd php56u-gd php56u-mysql php56u-opcache php56u-mbstring
   # timedatectl set-timezone Europe/Athens
   # sed -i 's/;date.timezone =/date.timezone = Europe\/Athens/g' /etc/php.ini
   # systemctl enable httpd
@@ -663,10 +663,36 @@ Site Map & No (Plugin Only) & No (Plugin Only) & No (Plugin Only) \\
 Σειρά από εδώ και εμπρός έχει η επιλογή θέματος (προαιρετικά) και η προσθήκη περιεχομένου στη νέα ιστοσελίδα που δημιουργήθηκε.
 
 \section{Προσθήκη Περιεχομένου στο \textlatin{Drupal} Ιστότοπο}
-https://code.tutsplus.com/tutorials/intro-to-drupal-build-a-simple-cms--net-2165
+Από το μενού \textlatin{\texttt{Appearence -> Install new theme}} επιλέγουμε το θέμα το οποίο θέλουμε να εφαρμόσουμε στο νέο μας ιστότοπο. Για τις ανάγκες της εργασίας επιλέξαμε ένα δωρεάν θέμα \textlatin{bloging}. Η διαδικασία επιλογής θέματος φαίνεται στο Σχήμα~\ref{fig:drupal_theme}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth, height=7cm]{drupal-add-theme-gray}
+\caption{\textlatin{Drupal 8}, Επιλογή θέματος}
+\label{fig:drupal_theme}
+\end{figure}
+
+Μετά την εφαρμογή του θέματος μπορούμε να εισάγουμε περιεχόμενο στον νέο μας ιστότοπο. Στις επόμενες εικόνες παρουσιάζεται η φόρμα εισαγωγής νέου περιεχομένου, η οποία προκύπτει από το μενού \textlatin{\texttt{Content -> Add new content}} (Σχήμα~\ref{fig:drupal_add_content}).
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth, height=9cm]{drupal-add-content-gray}
+\caption{\textlatin{Drupal 8}, Φόρμα εισαγωγής νέου περιεχομένου}
+\label{fig:drupal_add_content}
+\end{figure}
+
+Το τελικό αποτέλεσμα εμφανίζεται στο Σχήμα~\ref{fig:drupal_blog_entry}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth, height=9cm]{drupal-blog-entry-gray}
+\caption{\textlatin{Drupal 8}, Νέο άρθρο στο \textlatin{blog}}
+\label{fig:drupal_blog_entry}
+\end{figure}
+
+Με παρόμοιο τρόπο μπορούμε να προσθέτουμε νέο περιεχόμενο και να ανανεώνουμε συνεχώς τον ιστότοπο.
+
+Αξίζει να σημειωθεί ότι το θέμα που χρησιμοποιήθηκε, παρέχει πλήρη λειτουργικότητα \textlatin{bloging} με δυνατότητα εγγραφής χρηστών, ανάρτησης σχολίων, \textlatin{RSS feed} κ.α. Επίσης όλα τα λογισμικά που χρησιμοποιήθηκαν για τη δημιουργία του ιστότοπου ήταν δωρεάν ανοιχτού κώδικα, κάτι που κάνει τις τεχνολογίες του Διαδικτύου ανοιχτές προς όλους, χωρίς κόστος.
 
 \section{Συμπεράσματα}
-Στο παρόν, παρουσιάστηκε η διαδικασία ανάπτυξης καθώς και η λειτουργικότητα μιας ιστοσελίδας ηλεκτρονικών δημοπρασιών. Έγινε αναφορά σε βασικές έννοιες του ηλεκτρονικού εμπορίου και των ηλεκτρονικών δημοπρασιών. Στη συνέχεια περιγράφηκαν τα εργαλεία τα οποία χρησιμοποιήθηκαν για την ανάπτυξη του ιστοτόπου της εργασίας και ο τρόπος με τον οποίο αυτοματοποιήθηκαν και συνδυάστηκαν για την παραγωγή του τελικού αποτελέσματος, μετά και τη διαδικασία αποσφαλμάτωσης. Τέλος παρουσιάστηκαν οι βασικές λειτουργίες της σελίδας με συνοπτικό τρόπο και τη βοήθεια ανάλογων \textlatin{screenshots}.
+Στο παρόν, παρουσιάστηκε η διαδικασία ανάπτυξης καθώς και η λειτουργικότητα μιας απλής ιστοσελίδας με τη χρήση του \textlatin{Drupal CMS}. Έγινε αναφορά σε βασικές έννοιες του ηλεκτρονικού εμπορίου και των ηλεκτρονικών δημοπρασιών. Στη συνέχεια περιγράφηκαν τα εργαλεία τα οποία χρησιμοποιήθηκαν για την ανάπτυξη του ιστοτόπου της εργασίας και ο τρόπος με τον οποίο αυτοματοποιήθηκαν και συνδυάστηκαν για την παραγωγή του τελικού αποτελέσματος, μετά και τη διαδικασία αποσφαλμάτωσης. Τέλος παρουσιάστηκαν οι βασικές λειτουργίες της σελίδας με συνοπτικό τρόπο και τη βοήθεια ανάλογων \textlatin{screenshots}.
 
 Η ιστοσελίδα της εργασίας παρέχει πλήρη λειτουργικότητα διεξαγωγής των δημοπρασιών, με αυτόματη ανανέωση της σελίδας και ενημέρωση των χρηστών για την πορεία της διαδικασίας. Εκτός αυτού, με τη διάκριση των ρόλων των χρηστών και την ασφαλή αυθεντικοποίηση μέσω φορμών εισαγωγής στοιχείων, παρέχεται η απαιτούμενη διασφάλιση της διαδικασίας. Λειτουργικότητες που δεν ενσωματώθηκαν στην εργασία, όπως πληρωμές με τραπεζικές κάρτες, \textlatin{paypal} κ.α παραλήφθηκαν για λόγους κόστους, όπως αναλύθηκε στο~\ref{vagrant}.
 
